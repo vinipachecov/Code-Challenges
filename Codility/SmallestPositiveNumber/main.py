@@ -20,36 +20,16 @@
 
 # expected worst-case time complexity is O(N);
 # expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
-# Copyright 2009–2017 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
 
-A = [-1,-2,-3] 
+
+A = [1, 2, 3] 
 if(len(A) == 1):
     if(A[0] == 1):
         print(2)
     print(1)
-else:    
-    print(A)
-    A = set(filter( lambda x: x>0, A))
-    print(A)
-    aux = 1
-    for elem in A:
-        if(elem == aux):
-            aux += 1
-        else:
-            print(aux)
-            break
-    print(aux)
-# solution        
-# if(len(A) == 1):
-#         if(A[0] == 1):
-#             return 2
-#         return 1
-#     else:            
-#         A = set(filter( lambda x: x>0, A))        
-#         aux = 1
-#         for elem in A:
-#             if(elem == aux):
-#                 aux += 1
-#             else:
-#                 return aux                
-#         return aux
+else:        
+    positives = set(filter( lambda x: x>0, A))           
+    print(next((i for i in range(1, len(positives) + 1) if not i in positives), 1))
+
+# the len(positives ) + 2 is because if len(A) in [1,2,3 ] will be equal 3
+#  you need to return 4 and your range goes from 1 to 3 
